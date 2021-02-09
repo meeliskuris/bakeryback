@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bakeryback
+
+spec:
+  selector:
+    app: bakeryback
+  type: NodePort
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bakeryback
+  labels:
+    app: bakeryback
+spec:
+  selector:
+    matchLabels:
+      app: bakeryback
+  template:
+    metadata:
+      name: bakeryback
+      labels:
+        app: bakeryback
+    spec:
+      containers:
+        - name: bakeryback
+          image: bakeryback
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+              protocol: TCP

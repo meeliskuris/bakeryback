@@ -1,0 +1,120 @@
+databaseChangeLog:
+  - changeSet:
+      id: 11
+      author: meelis
+      changes:
+        - createTable:
+            tableName: product
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: numeric(10,2)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: image
+                  type: longblob
+                  constraints:
+                    nullable: true
+              - column:
+                  name: available_amount
+                  type: int
+                  constraints:
+                    nullable: true
+              - column:
+                  name: amount_changeable
+                  type: boolean
+                  constraints:
+                    nullable: true
+
+  - changeSet:
+      id: 12
+      author: meelis
+      changes:
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: name
+                  value: brownie
+              - column:
+                  name: price
+                  valueNumeric: 0.65
+              - column:
+                  name: image
+                  valueBlobFile: ../images/brownie.jpg
+              - column:
+                  name: available_amount
+                  valueNumeric: 48
+              - column:
+                  name: amount_changeable
+                  valueBoolean: false
+
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: name
+                  value: muffin
+              - column:
+                  name: price
+                  valueNumeric: 1.00
+              - column:
+                  name: image
+                  valueBlobFile: ../images/muffin.jpg
+              - column:
+                  name: available_amount
+                  valueNumeric: 36
+              - column:
+                  name: amount_changeable
+                  valueBoolean: false
+
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: name
+                  value: shirt
+              - column:
+                  name: price
+                  valueNumeric: 2.00
+              - column:
+                  name: image
+                  valueBlobFile: ../images/shirt.jpg
+              - column:
+                  name: available_amount
+                  valueNumeric: 0
+              - column:
+                  name: amount_changeable
+                  valueBoolean: true
+        - insert:
+            tableName: product
+            columns:
+              - column:
+                  name: name
+                  value: toy
+              - column:
+                  name: price
+                  valueNumeric: 1.00
+              - column:
+                  name: image
+                  valueBlobFile: ../images/toy.jpg
+              - column:
+                  name: available_amount
+                  valueNumeric: 0
+              - column:
+                  name: amount_changeable
+                  valueBoolean: true
+
